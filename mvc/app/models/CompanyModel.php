@@ -34,3 +34,4 @@ class CompanyModel {
         return $this->db->get('companies');
     }
 }
+?>
