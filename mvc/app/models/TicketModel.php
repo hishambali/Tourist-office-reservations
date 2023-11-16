@@ -34,3 +34,4 @@ class TicketModel {
         return $this->db->get('tickets');
     }
 }
+?>
