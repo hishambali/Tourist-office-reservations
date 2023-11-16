@@ -85,3 +85,4 @@ class CompanyController {
         include '../views/company_list.php';
     }
 }
+?>
