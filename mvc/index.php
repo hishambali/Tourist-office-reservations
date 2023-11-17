@@ -26,9 +26,16 @@ $controller = new BookingController($model);
     
 <?php
 switch ($request) {
-    
+    case BASE_PATH:
+        $controller->index();
+        break;
     case BASE_PATH . "add":
         $controller->addBooking();
-        break; }
+            break;
+    case BASE_PATH . 'updata?id='.$_GET['id']:
+        $controller->updataBooking();
+            break;
+    
+    }
 
 ?>
