@@ -1,5 +1,5 @@
 <?php 
-namespace app\model;
+
 class HotelModel {
 
 

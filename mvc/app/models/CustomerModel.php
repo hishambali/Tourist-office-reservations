@@ -1,5 +1,4 @@
 <?php 
-namespace app\model;
 
 class CustomerModel {
     private $db;
@@ -7,7 +6,6 @@ class CustomerModel {
     public function __construct($db) {
         $this->db = $db;
     }
-
     public function getCustomers() {
         return $this->db->get('customers');
     }

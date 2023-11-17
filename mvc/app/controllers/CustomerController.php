@@ -1,9 +1,6 @@
 <?php
     
-namespace app\controllers;
-
 require __DIR__.'/../models/CustomerModel.php';
-use app\models\CustomerModel;
 class CustomerController {
     
     private $model;
@@ -12,8 +9,13 @@ class CustomerController {
       
         $this->model = new CustomerModel($db);
     }
+    
+    function index ()
+    {
+        
+    }
 
-    public function addCustomer() {
+    public function add() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = $_POST['name'];
             $phone = $_POST['phone'];
@@ -25,7 +27,7 @@ class CustomerController {
                 'gender' => $gender,
                 'email' => $email
             ];
-
+            var_dump($_POST);
             if ($this->model->addCustomer($data)) {
                 header('Location:'.BASE_PATH);
                 echo 'done' ;
@@ -35,12 +37,12 @@ class CustomerController {
         }
     }
 
-    public function showCustomers() {
+    public function show() {
         $customers = $this->model->getCustomers();
-        echo $customers;
+        print_r(json_encode($customers));
     }
 
-    public function deleteCustomer($id) {
+    public function delete($id) {
         if ($this->model->deleteCustomer($id)) {
             echo "customer deleted successfully!";
             header('Location:' . BASE_PATH);
@@ -49,7 +51,7 @@ class CustomerController {
         }
     }
 
-    public function updateCustomer($id) {
+    public function update($id) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = $_POST['name'];
             $phone = $_POST['phone'];
@@ -72,12 +74,8 @@ class CustomerController {
         }
     }
 
-    public function editCustomer($id) {
+    public function edit($id) {
         $customer = $this->model->getCustomerById($id);
-    }
-
-    public function searchCustomers($searchTerm) {
-        $customers = $this->model->searchCustomers($searchTerm);
     }
 }
 

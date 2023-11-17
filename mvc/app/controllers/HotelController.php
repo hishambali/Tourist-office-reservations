@@ -1,8 +1,6 @@
 <?php
-namespace app\controllers;
 
 require __DIR__.'/../models/HotelModel.php';
-use app\models\HotelModel;
 
 class HotelController {
 
@@ -12,8 +10,11 @@ class HotelController {
       
         $this->model = new HotelModel($db);
     }
+    public function index(){
 
-    public function addHotel() {
+    }
+
+    public function add() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = $_POST['name'];
             $phone = $_POST['phone'];
@@ -33,12 +34,12 @@ class HotelController {
         }
     }
 
-    public function showHotels() {
+    public function show() {
         $hotels = $this->model->getHotels();
-        echo $hotels;
+        print_r(json_encode($hotels));
     }
 
-    public function deleteHotel($id) {
+    public function delete($id) {
         if ($this->model->deleteHotel($id)) {
             echo "hotel deleted successfully!";
             header('Location:' . BASE_PATH);
@@ -47,7 +48,7 @@ class HotelController {
         }
     }
 
-    public function updateHotel($id) {
+    public function update($id) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = $_POST['name'];
             $phone = $_POST['phone'];
@@ -68,12 +69,8 @@ class HotelController {
         }
     }
 
-    public function editHotel($id) {
+    public function edit($id) {
         $hotel = $this->model->getHotelById($id);
-    }
-
-    public function searchHotels($searchTerm) {
-        $hotels = $this->model->searchHotels($searchTerm);
     }
 
 }
