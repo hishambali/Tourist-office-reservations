@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /mvc/
+RewriteBase /Tourist-office-reservations/mvc/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?id=1 [L,QSA]
